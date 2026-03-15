@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koleksi Foto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #050505;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            column-count: 3; /* Default 3 kolom */
+            column-gap: 20px;
+        }
+
+        /* Gallery item */
+        .photo-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            background: white;
+            margin-bottom: 20px; /* Jarak vertikal antar item */
+            break-inside: avoid; /* Mencegah item terpotong di antara kolom */
+        }
+
+        .photo-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            max-width: 85%;
+            max-height: 85vh;
+            animation-name: zoom;
+            animation-duration: 0.4s;
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0.1)}
+            to {transform: scale(1)}
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        /* Responsive Masonry Grid */
+        @media (max-width: 1000px) {
+            .container {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                column-count: 1;
+            }
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 12px 24px;
+            background: white;
+            color: #333;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .back-btn:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← Kembali ke Profil</a>
+    <div class="container">
+        <!-- ITEM 1: foto kiri, teks kanan -->
+        <div class="photo-item">
+            <!-- Gambar dari Picsum (ganti dengan foto Anda) -->
+            <img src="photo_2026-03-15_08-21-25.jpg" alt="Foto 1" loading="lazy">
+        </div>
+
+        <!-- ITEM 2: foto kanan, teks kiri (otomatis karena genap) -->
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-24.jpg" alt="Foto 2" loading="lazy">
+        </div>
+
+        <!-- ITEM 3: foto kiri, teks kanan (kembali normal) -->
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-23.jpg" alt="Foto 3" loading="lazy">
+        </div>
+
+        <!-- ITEM 4: foto kanan, teks kiri (genap) -->
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-15.jpg" alt="Foto 4" loading="lazy">
+        </div>
+
+        <!-- ITEM 5: bisa ditambah, tetap bergantian otomatis -->
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-21.jpg" alt="Foto 5" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-20.jpg" alt="Foto 6" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-19.jpg" alt="Foto 7" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-07.jpg" alt="Foto 8" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-17.jpg" alt="Foto 9" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-10.jpg" alt="Foto 10" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-09.jpg" alt="Foto 11" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-06.jpg" alt="Foto 12" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-05.jpg" alt="Foto 13" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-04.jpg" alt="Foto 14" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-02.jpg" alt="Foto 15" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-01.jpg" alt="Foto 16" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-21-00.jpg" alt="Foto 17" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-20-59.jpg" alt="Foto 18" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-20-57.jpg" alt="Foto 19" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-20-56.jpg" alt="Foto 20" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-20-54.jpg" alt="Foto 21" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-20-53.jpg" alt="Foto 22" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-20-51.jpg" alt="Foto 23" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-20-50.jpg" alt="Foto 24" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-20-48.jpg" alt="Foto 25" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-20-45.jpg" alt="Foto 26" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-20-42.jpg" alt="Foto 27" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-20-39.jpg" alt="Foto 28" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="MUHAMMAD ARDIANSYAH.jpg" alt="Foto 29" loading="lazy">
+        </div>
+
+        <div class="photo-item">
+            <img src="foto foto/photo_2026-03-15_08-20-37.jpg" alt="Foto 30" loading="lazy">
+        </div>
+    </div>
+
+    <!-- Modal/Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script>
+        // Get modal elements
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.close-btn');
+
+        // Get all gallery images
+        const galleryImages = document.querySelectorAll('.photo-item img');
+
+        // Loop through each image and add click event
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = img.src;
+            });
+        });
+
+        // Close modal when close button or background is clicked
+        function closeModal() {
+            lightbox.style.display = 'none';
+        }
+        closeBtn.addEventListener('click', closeModal);
+        lightbox.addEventListener('click', (e) => { if (e.target !== lightboxImg) { closeModal(); } });
+    </script>
+</body>
+</html>
